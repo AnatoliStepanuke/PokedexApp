@@ -1,19 +1,12 @@
-//
-//  ViewController.swift
-//  PokemonApp
-//
-//  Created by Anatoli on 08.11.2022.
-//
-
 import UIKit
 
-class ViewController: UIViewController {
-
+final class ViewController: UIViewController {
+    // MARK: - Constants
+    // MARK: - Properties
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .blue
     }
-
-
+    // MARK: - Setups
 }
-
