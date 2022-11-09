@@ -5,7 +5,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     // MARK: - Constants
-    private let rootViewController = ViewController()
+    private let rootViewController = PokemonViewController()
 
     // MARK: - UIScene
     func scene(

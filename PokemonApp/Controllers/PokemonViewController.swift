@@ -1,6 +1,6 @@
 import UIKit
 
-final class ViewController: UIViewController {
+final class PokemonViewController: UIViewController {
     // MARK: - Constants
     // MARK: - Properties
     // MARK: - Lifecycle
