@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC679F16291C00D200AB8402 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = DC679F15291C00D200AB8402 /* Alamofire */; };
 		DC6B9126291ABED8007505AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6B9125291ABED8007505AF /* AppDelegate.swift */; };
 		DC6B9128291ABED8007505AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6B9127291ABED8007505AF /* SceneDelegate.swift */; };
 		DC6B912A291ABED8007505AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6B9129291ABED8007505AF /* ViewController.swift */; };
-		DC6B912D291ABED8007505AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC6B912B291ABED8007505AF /* Main.storyboard */; };
 		DC6B912F291ABEDA007505AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC6B912E291ABEDA007505AF /* Assets.xcassets */; };
 		DC6B9132291ABEDA007505AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC6B9130291ABEDA007505AF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -20,7 +20,6 @@
 		DC6B9125291ABED8007505AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC6B9127291ABED8007505AF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		DC6B9129291ABED8007505AF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		DC6B912C291ABED8007505AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DC6B912E291ABEDA007505AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DC6B9131291ABEDA007505AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DC6B9133291ABEDA007505AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -31,6 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC679F16291C00D200AB8402 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +56,46 @@
 		DC6B9124291ABED8007505AF /* PokemonApp */ = {
 			isa = PBXGroup;
 			children = (
-				DC6B9125291ABED8007505AF /* AppDelegate.swift */,
-				DC6B9127291ABED8007505AF /* SceneDelegate.swift */,
-				DC6B9129291ABED8007505AF /* ViewController.swift */,
-				DC6B912B291ABED8007505AF /* Main.storyboard */,
-				DC6B912E291ABEDA007505AF /* Assets.xcassets */,
-				DC6B9130291ABEDA007505AF /* LaunchScreen.storyboard */,
+				DC6B913F291AC67E007505AF /* Assets */,
+				DC6B913E291AC66A007505AF /* Controllers */,
+				DC6B913D291AC65E007505AF /* Delegates */,
 				DC6B9133291ABEDA007505AF /* Info.plist */,
+				DC6B9140291AC68A007505AF /* Storyboards */,
 			);
 			path = PokemonApp;
+			sourceTree = "<group>";
+		};
+		DC6B913D291AC65E007505AF /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				DC6B9125291ABED8007505AF /* AppDelegate.swift */,
+				DC6B9127291ABED8007505AF /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		DC6B913E291AC66A007505AF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DC6B9129291ABED8007505AF /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		DC6B913F291AC67E007505AF /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				DC6B912E291ABEDA007505AF /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		DC6B9140291AC68A007505AF /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				DC6B9130291ABEDA007505AF /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,12 +108,16 @@
 				DC6B911E291ABED8007505AF /* Sources */,
 				DC6B911F291ABED8007505AF /* Frameworks */,
 				DC6B9120291ABED8007505AF /* Resources */,
+				DC6B9141291AC70E007505AF /* Run Script */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = PokemonApp;
+			packageProductDependencies = (
+				DC679F15291C00D200AB8402 /* Alamofire */,
+			);
 			productName = PokemonApp;
 			productReference = DC6B9122291ABED8007505AF /* PokemonApp.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +146,9 @@
 				Base,
 			);
 			mainGroup = DC6B9119291ABED8007505AF;
+			packageReferences = (
+				DC679F14291C00D200AB8402 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = DC6B9123291ABED8007505AF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,11 +165,32 @@
 			files = (
 				DC6B9132291ABEDA007505AF /* LaunchScreen.storyboard in Resources */,
 				DC6B912F291ABEDA007505AF /* Assets.xcassets in Resources */,
-				DC6B912D291ABED8007505AF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		DC6B9141291AC70E007505AF /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nexport PATH\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DC6B911E291ABED8007505AF /* Sources */ = {
@@ -147,14 +206,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		DC6B912B291ABED8007505AF /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DC6B912C291ABED8007505AF /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		DC6B9130291ABEDA007505AF /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -216,7 +267,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -270,7 +321,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -292,7 +343,6 @@
 				INFOPLIST_FILE = PokemonApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -320,7 +370,6 @@
 				INFOPLIST_FILE = PokemonApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -358,6 +407,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DC679F14291C00D200AB8402 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DC679F15291C00D200AB8402 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DC679F14291C00D200AB8402 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DC6B911A291ABED8007505AF /* Project object */;
 }
