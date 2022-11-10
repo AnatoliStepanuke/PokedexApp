@@ -21,7 +21,7 @@ final class PokemonViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = 120
-        tableView.backgroundColor = .blue
+        tableView.backgroundColor = AppColor.shadowColor
         tableView.separatorStyle = .none
     }
 
