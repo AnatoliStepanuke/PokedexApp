@@ -15,6 +15,7 @@
 		DC679F29291D31EB00AB8402 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC679F28291D31EB00AB8402 /* APIManager.swift */; };
 		DC679F3C291E990400AB8402 /* PokemonUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC679F3B291E990400AB8402 /* PokemonUILabel.swift */; };
 		DC679F3F291EA1C300AB8402 /* PokemonUIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC679F3E291EA1C300AB8402 /* PokemonUIStackView.swift */; };
+		DC679F41291ECD3B00AB8402 /* APIManager+constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC679F40291ECD3B00AB8402 /* APIManager+constants.swift */; };
 		DC6B9126291ABED8007505AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6B9125291ABED8007505AF /* AppDelegate.swift */; };
 		DC6B9128291ABED8007505AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6B9127291ABED8007505AF /* SceneDelegate.swift */; };
 		DC6B912A291ABED8007505AF /* PokemonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6B9129291ABED8007505AF /* PokemonViewController.swift */; };
@@ -30,6 +31,7 @@
 		DC679F28291D31EB00AB8402 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		DC679F3B291E990400AB8402 /* PokemonUILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonUILabel.swift; sourceTree = "<group>"; };
 		DC679F3E291EA1C300AB8402 /* PokemonUIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonUIStackView.swift; sourceTree = "<group>"; };
+		DC679F40291ECD3B00AB8402 /* APIManager+constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIManager+constants.swift"; sourceTree = "<group>"; };
 		DC6B9122291ABED8007505AF /* PokemonApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokemonApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC6B9125291ABED8007505AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC6B9127291ABED8007505AF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				DC679F1B291D226500AB8402 /* UIView+constraints.swift */,
+				DC679F40291ECD3B00AB8402 /* APIManager+constants.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC679F29291D31EB00AB8402 /* APIManager.swift in Sources */,
+				DC679F41291ECD3B00AB8402 /* APIManager+constants.swift in Sources */,
 				DC679F3F291EA1C300AB8402 /* PokemonUIStackView.swift in Sources */,
 				DC679F26291D2B8F00AB8402 /* Pokemon.swift in Sources */,
 				DC6B912A291ABED8007505AF /* PokemonViewController.swift in Sources */,

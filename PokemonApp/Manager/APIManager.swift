@@ -1,9 +1,6 @@
 import Alamofire
 
 final class APIManager {
-    private enum Constants {
-        static let baseURL: String = "https://pokeapi.co/api/v2/pokemon"
-    }
     static let instance = APIManager()
 
     // MARK: - Init
