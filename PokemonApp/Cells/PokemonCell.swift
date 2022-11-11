@@ -5,8 +5,8 @@ final class PokemonCell: UITableViewCell {
     // MARK: - Private
     private let containerView = UIView()
     private let pokemonLabel = UILabel()
-    private let URLLabel = UILabel()
-
+    var paginationLabel = UILabel()
+    
     // MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -30,7 +30,7 @@ final class PokemonCell: UITableViewCell {
         containerView.backgroundColor = AppColor.shadowColor
         containerView.layer.cornerRadius = 16
         containerView.addSubview(pokemonLabel)
-        containerView.addSubview(URLLabel)
+        containerView.addSubview(paginationLabel)
     }
 
     private func setupNameLabel() {
@@ -45,18 +45,18 @@ final class PokemonCell: UITableViewCell {
     }
 
     private func setupCompletedLabel() {
-        URLLabel.translatesAutoresizingMaskIntoConstraints = false
-        URLLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 12).isActive = true
-        URLLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -12).isActive = true
-        URLLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -12).isActive = true
-        URLLabel.widthAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 0.15).isActive = true
-        URLLabel.textColor = .black
-        URLLabel.textAlignment = .right
+        paginationLabel.translatesAutoresizingMaskIntoConstraints = false
+        paginationLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 12).isActive = true
+        paginationLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -12).isActive = true
+        paginationLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -12).isActive = true
+        paginationLabel.widthAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 0.15).isActive = true
+        paginationLabel.textColor = .black
+        paginationLabel.textAlignment = .right
     }
 
     // MARK: - API
-    func configure(using pokemon: Result) {
+    func configure(using pokemon: Result, paginationCount: IndexPath) {
         pokemonLabel.text = pokemon.name
-        URLLabel.text = pokemon.url
+        paginationLabel.text = "\(paginationCount.row + 1)"
     }
 }

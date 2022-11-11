@@ -32,7 +32,7 @@ final class PokemonViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.fillEntireView()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = 120
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
         tableView.register(PokemonCell.self, forCellReuseIdentifier: "PokemonCell")
         tableView.backgroundColor = .white
@@ -49,7 +49,7 @@ final class PokemonViewController: UIViewController, UITableViewDelegate, UITabl
             for: indexPath
         ) as? PokemonCell else { fatalError("DequeueReusableCell failed while casting.") }
         let pokemon = pokemons[indexPath.row]
-        cell.configure(using: pokemon)
+        cell.configure(using: pokemon, paginationCount: indexPath)
         cell.backgroundColor = .white
         return cell
     }
