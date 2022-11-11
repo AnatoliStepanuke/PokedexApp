@@ -6,7 +6,7 @@ final class PokemonCell: UITableViewCell {
     private let containerView = UIView()
     private let pokemonLabel = UILabel()
     var paginationLabel = UILabel()
-    
+
     // MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
