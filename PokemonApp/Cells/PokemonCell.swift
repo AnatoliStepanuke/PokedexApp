@@ -27,7 +27,7 @@ final class PokemonCell: UITableViewCell {
         containerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12).isActive = true
         containerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12).isActive = true
         containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12).isActive = true
-        containerView.backgroundColor = .white
+        containerView.backgroundColor = AppColor.shadowColor
         containerView.layer.cornerRadius = 16
         containerView.addSubview(pokemonLabel)
         containerView.addSubview(URLLabel)
@@ -55,7 +55,7 @@ final class PokemonCell: UITableViewCell {
     }
 
     // MARK: - API
-    func configure(using pokemon: Pokemon) {
+    func configure(using pokemon: Result) {
         pokemonLabel.text = pokemon.name
         URLLabel.text = pokemon.url
     }
