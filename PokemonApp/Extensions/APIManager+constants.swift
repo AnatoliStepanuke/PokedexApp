@@ -5,3 +5,4 @@ extension APIManager {
         static let baseURL: String = "https://pokeapi.co/api/v2/pokemon"
     }
 }
+
