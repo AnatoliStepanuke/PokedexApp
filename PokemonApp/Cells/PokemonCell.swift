@@ -38,7 +38,7 @@ final class PokemonCell: UITableViewCell {
     }
 
     // MARK: - API
-    func configure(using pokemon: Result, paginationCount: IndexPath) {
+    func configure(using pokemon: Pokemon, paginationCount: IndexPath) {
         pokemonLabel.text = pokemon.name
         paginationLabel.text = "\(paginationCount.row + 1)"
     }

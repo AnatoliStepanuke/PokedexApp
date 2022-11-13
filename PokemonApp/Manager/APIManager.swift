@@ -7,10 +7,12 @@ final class APIManager {
     private init() { }
 
     // MARK: - API
-    static func getAllPokemons(completion: @escaping((Pokemon) -> Void)) {
-        AF.request(Constants.baseURL).responseDecodable(of: Pokemon.self) { response in
+    static func getResults(completion: @escaping((Result) -> Void)) {
+        AF.request(Constants.baseURL).responseDecodable(of: Result.self) { response in
             switch response.result {
-            case .success(let data): completion(data)
+            case .success(let data):
+                print(response)
+                completion(data)
             case .failure(let error): print(error)
             }
         }

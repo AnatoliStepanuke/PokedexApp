@@ -5,7 +5,7 @@ final class PokemonViewController: UIViewController, UITableViewDelegate, UITabl
     private let tableView = UITableView()
 
     // MARK: - Properties
-    private var pokemons: [Result] = [] {
+    private var pokemons: [Pokemon] = [] {
         didSet { tableView.reloadData() }
     }
 
@@ -18,8 +18,8 @@ final class PokemonViewController: UIViewController, UITableViewDelegate, UITabl
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        APIManager.getAllPokemons { pokemon in
-            self.pokemons = pokemon.results
+        APIManager.getResults { results in
+            self.pokemons = results.results
         }
     }
 
@@ -52,5 +52,9 @@ final class PokemonViewController: UIViewController, UITableViewDelegate, UITabl
         cell.configure(using: pokemon, paginationCount: indexPath)
         cell.backgroundColor = .white
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        print(indexPath)
     }
 }

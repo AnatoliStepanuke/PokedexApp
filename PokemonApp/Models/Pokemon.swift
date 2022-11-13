@@ -1,14 +1,11 @@
-import Foundation
+import UIKit
 
 // MARK: - Pokemon
-struct Pokemon: Codable {
-    let count: Int
-    let next: String
-    let results: [Result]
+struct Result: Codable {
+    let results: [Pokemon]
 }
 
 // MARK: - Result
-struct Result: Codable {
+struct Pokemon: Codable {
     let name: String
-    let url: String
 }
