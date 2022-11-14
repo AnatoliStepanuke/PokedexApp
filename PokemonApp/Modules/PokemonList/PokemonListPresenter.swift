@@ -2,7 +2,7 @@ import Foundation
 
 protocol ListPresenter {
     func loadAllPokemonsPages()
-    func transitionToDeatailsModule()
+    func transitionToDeatailsModule(pokemonId: Int)
 }
 
 final class PokemonListPresenter: ListPresenter {
@@ -22,9 +22,9 @@ final class PokemonListPresenter: ListPresenter {
         }
     }
 
-    func transitionToDeatailsModule() {
+    func transitionToDeatailsModule(pokemonId: Int) {
         let view = DetailsScreenView()
-        let presenter = DetailsScreenPresenter(detailsView: view)
+        let presenter = DetailsScreenPresenter(detailsView: view, pokemonId: pokemonId)
         view.detailsPresenter = presenter
         listView.setTransition(view: view, presenter: presenter)
     }
