@@ -4,7 +4,7 @@ protocol ListView: AnyObject {
     func setPokemons(pokemons: [Pokemon])
 }
 
-final class PokemonListView: UIViewController, ListView {
+final class PokemonListView: UIViewController {
     // MARK: - Constants
     // Private
     private let tableView = UITableView()
@@ -12,9 +12,7 @@ final class PokemonListView: UIViewController, ListView {
     // MARK: - Properties
     // Public
     var listPresenter: ListPresenter?
-
-    // Private
-    private var pokemons: [Pokemon] = [] {
+    var pokemons: [Pokemon] = [] {
         didSet { tableView.reloadData() }
     }
 
@@ -32,9 +30,6 @@ final class PokemonListView: UIViewController, ListView {
         }
     }
 
-    // MARK: - API
-    func setPokemons(pokemons: [Pokemon]) { self.pokemons = pokemons }
-
     // MARK: - Setups
     private func setupView() { view.addSubview(tableView) }
     private func setupTableView() {
@@ -45,27 +40,5 @@ final class PokemonListView: UIViewController, ListView {
         tableView.separatorStyle = .none
         tableView.register(PokemonCell.self, forCellReuseIdentifier: "PokemonCell")
         tableView.backgroundColor = .white
-    }
-}
-
-extension PokemonListView: UITableViewDelegate, UITableViewDataSource {
-    // MARK: - UITableView
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        pokemons.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: "PokemonCell",
-            for: indexPath
-        ) as? PokemonCell else { fatalError("DequeueReusableCell failed while casting.") }
-        let pokemon = pokemons[indexPath.row]
-        cell.configure(using: pokemon, paginationCount: indexPath)
-        cell.backgroundColor = .white
-        return cell
-    }
-
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        print(indexPath)
     }
 }
