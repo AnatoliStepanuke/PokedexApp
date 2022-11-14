@@ -1,7 +1,7 @@
 import UIKit
 
 protocol DetailsPresenter {
-    func loadPokemonImage()
+    func loadPokemonDetails()
 }
 
 final class DetailsScreenPresenter: DetailsPresenter {
@@ -17,11 +17,12 @@ final class DetailsScreenPresenter: DetailsPresenter {
     }
 
     // MARK: - API
-    func loadPokemonImage() {
+    func loadPokemonDetails() {
         APIManager.instance.getPokemonDetails(pokemonId: pokemonId) { [weak self] pokemon in
             APIManager.instance.loadImage(imageLink: pokemon.sprites.frontDefault ?? "") { [weak self] image in
                 DispatchQueue.main.async {
                     self?.detailsView.setPokemonImage(image: image)
+                    self?.detailsView.setPokemonName(name: pokemon.name)
                 }
             }
         }
