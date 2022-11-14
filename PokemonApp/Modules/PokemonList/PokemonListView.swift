@@ -26,8 +26,8 @@ final class PokemonListView: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if let pokemonListPresenterProtocol = listPresenter {
-            pokemonListPresenterProtocol.loadAllPokemons()
+        if let listPresenter = listPresenter {
+            listPresenter.loadAllPokemonsPages()
         }
     }
 

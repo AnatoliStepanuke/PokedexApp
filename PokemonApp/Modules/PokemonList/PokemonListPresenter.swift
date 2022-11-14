@@ -1,7 +1,7 @@
 import UIKit
 
 protocol ListPresenter {
-    func loadAllPokemons()
+    func loadAllPokemonsPages()
 }
 
 final class PokemonListPresenter: ListPresenter {
@@ -15,8 +15,8 @@ final class PokemonListPresenter: ListPresenter {
     }
 
     // MARK: - API
-    func loadAllPokemons() {
-        APIManager.getResults { [weak self] results in
+    func loadAllPokemonsPages() {
+        APIManager.instance.getPokemonsNextPage { [weak self] results in
             self?.listView.setPokemons(pokemons: results.results)
         }
     }
