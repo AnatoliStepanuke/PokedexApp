@@ -25,6 +25,7 @@
 		DC94C61F2922A399000AB7B2 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC94C61E2922A399000AB7B2 /* UIView+Constraints.swift */; };
 		DC94C6242922AC60000AB7B2 /* DetailsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC94C6232922AC60000AB7B2 /* DetailsScreenView.swift */; };
 		DC94C6262922ACBF000AB7B2 /* DetailsScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC94C6252922ACBF000AB7B2 /* DetailsScreenPresenter.swift */; };
+		DC9F9E672922CD1D0090CC4E /* UIView+AddSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9F9E662922CD1D0090CC4E /* UIView+AddSubviews.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		DC94C61E2922A399000AB7B2 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		DC94C6232922AC60000AB7B2 /* DetailsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsScreenView.swift; sourceTree = "<group>"; };
 		DC94C6252922ACBF000AB7B2 /* DetailsScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsScreenPresenter.swift; sourceTree = "<group>"; };
+		DC9F9E662922CD1D0090CC4E /* UIView+AddSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddSubviews.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				DC94C61E2922A399000AB7B2 /* UIView+Constraints.swift */,
+				DC9F9E662922CD1D0090CC4E /* UIView+AddSubviews.swift */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				DC94C619292277A2000AB7B2 /* PokemonListView+ListView.swift in Sources */,
 				DC94C60929216B9C000AB7B2 /* PokemonListView.swift in Sources */,
 				DC6B9126291ABED8007505AF /* AppDelegate.swift in Sources */,
+				DC9F9E672922CD1D0090CC4E /* UIView+AddSubviews.swift in Sources */,
 				DC94C60B29216C0C000AB7B2 /* PokemonListPresenter.swift in Sources */,
 				DC6B9128291ABED8007505AF /* SceneDelegate.swift in Sources */,
 				DC679F20291D274000AB8402 /* AppColor.swift in Sources */,
