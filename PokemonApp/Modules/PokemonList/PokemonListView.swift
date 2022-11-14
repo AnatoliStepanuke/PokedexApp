@@ -2,6 +2,7 @@ import UIKit
 
 protocol ListView: AnyObject {
     func setPokemons(pokemons: [Pokemon])
+    func setTransition(view: DetailsScreenView, presenter: DetailsScreenPresenter)
 }
 
 final class PokemonListView: UIViewController {
@@ -45,5 +46,13 @@ final class PokemonListView: UIViewController {
         tableView.separatorStyle = .none
         tableView.register(PokemonCell.self, forCellReuseIdentifier: "PokemonCell")
         tableView.backgroundColor = .white
+    }
+}
+
+extension PokemonListView: ListView {
+    // MARK: - API
+    func setPokemons(pokemons: [Pokemon]) { self.pokemons += pokemons }
+    func setTransition(view: DetailsScreenView, presenter: DetailsScreenPresenter) {
+        navigationController?.pushViewController(view, animated: true)
     }
 }
