@@ -1,10 +1,19 @@
 import UIKit
 
-final class PokemonViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+protocol ListView: AnyObject {
+    func setPokemons(pokemons: [Pokemon])
+}
+
+final class PokemonListView: UIViewController, ListView {
     // MARK: - Constants
+    // Private
     private let tableView = UITableView()
 
     // MARK: - Properties
+    // Public
+    var listPresenter: ListPresenter?
+
+    // Private
     private var pokemons: [Pokemon] = [] {
         didSet { tableView.reloadData() }
     }
@@ -18,16 +27,16 @@ final class PokemonViewController: UIViewController, UITableViewDelegate, UITabl
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        APIManager.getResults { results in
-            self.pokemons = results.results
+        if let pokemonListPresenterProtocol = listPresenter {
+            pokemonListPresenterProtocol.loadAllPokemons()
         }
     }
 
-    // MARK: - Setups
-    private func setupView() {
-        view.addSubview(tableView)
-    }
+    // MARK: - API
+    func setPokemons(pokemons: [Pokemon]) { self.pokemons = pokemons }
 
+    // MARK: - Setups
+    private func setupView() { view.addSubview(tableView) }
     private func setupTableView() {
         tableView.fillEntireView()
         tableView.delegate = self
@@ -37,10 +46,12 @@ final class PokemonViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.register(PokemonCell.self, forCellReuseIdentifier: "PokemonCell")
         tableView.backgroundColor = .white
     }
+}
 
+extension PokemonListView: UITableViewDelegate, UITableViewDataSource {
     // MARK: - UITableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return pokemons.count
+        pokemons.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
