@@ -19,8 +19,8 @@ final class PokemonCell: UITableViewCell {
 
     // MARK: - Setups
     private func setupContainerView() {
-        self.addSubview(pokemonLabel)
-        self.addSubview(paginationLabel)
+        addSubview(pokemonLabel)
+        addSubview(paginationLabel)
         pokemonLabel.anchor(
             top: topAnchor,
             leading: leadingAnchor,

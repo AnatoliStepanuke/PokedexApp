@@ -20,6 +20,7 @@ final class PokemonListView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        setupNavigationController()
         setupTableView()
     }
 
@@ -32,6 +33,10 @@ final class PokemonListView: UIViewController {
 
     // MARK: - Setups
     private func setupView() { view.addSubview(tableView) }
+    private func setupNavigationController() {
+        title = "Pokemon List"
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
     private func setupTableView() {
         tableView.fillEntireView()
         tableView.delegate = self
