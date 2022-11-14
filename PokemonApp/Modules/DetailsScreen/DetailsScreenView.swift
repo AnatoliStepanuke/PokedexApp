@@ -3,13 +3,24 @@ import UIKit
 protocol DetailsView: AnyObject {
     func setPokemonImage(image: UIImage)
     func setPokemonName(name: String)
+    func setPokemonType(types: [TypeElement])
+    func setPokemonHeight(height: Int)
+    func setPokemonWeight(weight: Int)
 }
 
 final class DetailsScreenView: UIViewController {
     // MARK: - Constants
+    private let pokemonStackView = PokemonUIStackView(
+        axis: .vertical,
+        alignment: .leading,
+        distribution: .equalSpacing,
+        height: 125
+    )
     private let pokemonImageView = UIImageView()
-    private let pokemonNameLabel = PokemonUILabel(height: 25, fontSize: 21, fontWeight: .semibold, fontColor: .black)
+    private let pokemonNameLabel = PokemonUILabel(height: 25, fontSize: 21, fontWeight: .medium, fontColor: .black)
     private let pokemonTypeLabel = PokemonUILabel(height: 25, fontSize: 21, fontWeight: .regular, fontColor: .black)
+    private let pokemonHeightLabel = PokemonUILabel(height: 25, fontSize: 17, fontWeight: .light, fontColor: .black)
+    private let pokemonWeightLabel = PokemonUILabel(height: 25, fontSize: 17, fontWeight: .light, fontColor: .black)
 
     // MARK: - Properties
     var detailsPresenter: DetailsPresenter?
@@ -19,19 +30,17 @@ final class DetailsScreenView: UIViewController {
         super.viewDidLoad()
         setupView()
         setupPokemonImageView()
-        setupPokemonNameLabel()
+        setupPokemonUIStackView()
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        if let detailsPresenter = detailsPresenter {
-            detailsPresenter.loadPokemonDetails()
-        }
+        if let detailsPresenter = detailsPresenter { detailsPresenter.loadPokemonDetails() }
     }
 
     // MARK: - Setups
     private func setupView() {
         view.backgroundColor = AppColor.shadowColor
-        view.addSubviews(views: pokemonImageView, pokemonNameLabel, pokemonTypeLabel)
+        view.addSubviews(pokemonImageView, pokemonStackView)
     }
 
     private func setupPokemonImageView() {
@@ -46,24 +55,20 @@ final class DetailsScreenView: UIViewController {
         pokemonImageView.contentMode = .scaleAspectFit
     }
 
-    private func setupPokemonNameLabel() {
-        pokemonNameLabel.anchor(
+    private func setupPokemonUIStackView() {
+        pokemonStackView.anchor(
             top: pokemonImageView.bottomAnchor,
             leading: view.leadingAnchor,
             trailing: view.trailingAnchor,
             bottom: nil,
             padding: .init(top: 36, left: 16, bottom: 0, right: 16)
         )
-    }
-
-    private func setupPokemonTypeLabel() {
-        pokemonNameLabel.anchor(
-            top: pokemonNameLabel.bottomAnchor,
-            leading: view.leadingAnchor,
-            trailing: view.trailingAnchor,
-            bottom: nil,
-            padding: .init(top: 12, left: 16, bottom: 0, right: 16)
-        )
+        pokemonStackView.addArrangedSubviews([
+            pokemonNameLabel,
+            pokemonTypeLabel,
+            pokemonHeightLabel,
+            pokemonWeightLabel
+        ])
     }
 }
 
@@ -75,5 +80,17 @@ extension DetailsScreenView: DetailsView {
 
     func setPokemonName(name: String) {
         pokemonNameLabel.text = "Pokemon name: \(name)"
+    }
+
+    func setPokemonType(types: [TypeElement]) {
+        for type in types { pokemonTypeLabel.text = "Type: \(type.type.name)" }
+    }
+
+    func setPokemonHeight(height: Int) {
+        pokemonHeightLabel.text = "Height: \(height * 100) cm"
+    }
+
+    func setPokemonWeight(weight: Int) {
+        pokemonWeightLabel.text = "Weight: \(weight / 10) kg"
     }
 }

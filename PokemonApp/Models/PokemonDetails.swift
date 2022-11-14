@@ -2,9 +2,11 @@ import Foundation
 
 // MARK: - Pokemon Details
 struct PokemonDetails: Codable {
+    let height: Int
     let name: String
     let sprites: Sprites
     let types: [TypeElement]
+    let weight: Int
 }
 
 // MARK: - Sprites

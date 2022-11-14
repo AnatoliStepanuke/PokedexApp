@@ -23,6 +23,9 @@ final class DetailsScreenPresenter: DetailsPresenter {
                 DispatchQueue.main.async {
                     self?.detailsView.setPokemonImage(image: image)
                     self?.detailsView.setPokemonName(name: pokemon.name)
+                    self?.detailsView.setPokemonType(types: pokemon.types)
+                    self?.detailsView.setPokemonHeight(height: pokemon.height)
+                    self?.detailsView.setPokemonWeight(weight: pokemon.weight)
                 }
             }
         }

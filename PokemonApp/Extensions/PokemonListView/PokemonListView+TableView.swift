@@ -8,7 +8,7 @@ extension PokemonListView: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: "PokemonCell",
+            withIdentifier: PokemonCell.Constants.pokemonCell,
             for: indexPath
         ) as? PokemonCell else { fatalError("DequeueReusableCell failed while casting.") }
         let pokemon = pokemons[indexPath.row]
