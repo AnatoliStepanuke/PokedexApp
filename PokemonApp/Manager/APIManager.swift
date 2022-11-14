@@ -1,16 +1,21 @@
 import Alamofire
 
 final class APIManager {
-    static let instance = APIManager()
+    // MARK: - Properties
+    var baseURL: String = "https://pokeapi.co/api/v2/pokemon"
 
     // MARK: - Init
+    static let instance = APIManager()
     private init() { }
 
     // MARK: - API
-    static func getAllPokemons(completion: @escaping((Pokemon) -> Void)) {
-        AF.request(Constants.baseURL).responseDecodable(of: Pokemon.self) { response in
+    func getPokemonsNextPage(completion: @escaping((Result) -> Void)) {
+        AF.request(baseURL).responseDecodable(of: Result.self) { response in
             switch response.result {
-            case .success(let data): completion(data)
+            case .success(let data):
+                print(response)
+                completion(data)
+                self.baseURL = data.nextPage
             case .failure(let error): print(error)
             }
         }

@@ -19,8 +19,8 @@ final class PokemonCell: UITableViewCell {
 
     // MARK: - Setups
     private func setupContainerView() {
-        self.addSubview(pokemonLabel)
-        self.addSubview(paginationLabel)
+        addSubview(pokemonLabel)
+        addSubview(paginationLabel)
         pokemonLabel.anchor(
             top: topAnchor,
             leading: leadingAnchor,
@@ -38,7 +38,7 @@ final class PokemonCell: UITableViewCell {
     }
 
     // MARK: - API
-    func configure(using pokemon: Result, paginationCount: IndexPath) {
+    func configure(using pokemon: Pokemon, paginationCount: IndexPath) {
         pokemonLabel.text = pokemon.name
         paginationLabel.text = "\(paginationCount.row + 1)"
     }
