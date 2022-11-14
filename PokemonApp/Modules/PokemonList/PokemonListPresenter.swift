@@ -1,7 +1,8 @@
-import UIKit
+import Foundation
 
 protocol ListPresenter {
     func loadAllPokemonsPages()
+    func transitionToDeatailsModule()
 }
 
 final class PokemonListPresenter: ListPresenter {
@@ -19,5 +20,12 @@ final class PokemonListPresenter: ListPresenter {
         APIManager.instance.getPokemonsNextPage { [weak self] results in
             self?.listView.setPokemons(pokemons: results.results)
         }
+    }
+
+    func transitionToDeatailsModule() {
+        let view = DetailsScreenView()
+        let presenter = DetailsScreenPresenter(detailsView: view)
+        view.detailsPresenter = presenter
+        listView.setTransition(view: view, presenter: presenter)
     }
 }

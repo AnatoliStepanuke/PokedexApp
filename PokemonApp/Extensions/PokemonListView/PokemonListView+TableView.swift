@@ -24,4 +24,10 @@ extension PokemonListView: UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let listPresenter = listPresenter {
+            listPresenter.transitionToDeatailsModule()
+        }
+    }
 }
