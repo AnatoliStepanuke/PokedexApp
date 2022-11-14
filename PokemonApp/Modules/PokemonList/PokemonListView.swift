@@ -46,4 +46,5 @@ final class PokemonListView: UIViewController {
         tableView.register(PokemonCell.self, forCellReuseIdentifier: "PokemonCell")
         tableView.backgroundColor = .white
     }
+    
 }
