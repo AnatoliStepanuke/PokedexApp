@@ -13,7 +13,7 @@ extension PokemonListView: UITableViewDelegate, UITableViewDataSource {
         ) as? PokemonCell else { fatalError("DequeueReusableCell failed while casting.") }
         let pokemon = pokemons[indexPath.row]
         cell.configure(using: pokemon, paginationCount: indexPath)
-        cell.backgroundColor = .white
+        cell.backgroundColor = AppColor.shadowColor
         return cell
     }
 

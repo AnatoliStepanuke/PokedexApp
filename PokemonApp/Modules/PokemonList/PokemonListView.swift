@@ -45,7 +45,7 @@ final class PokemonListView: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
         tableView.register(PokemonCell.self, forCellReuseIdentifier: "PokemonCell")
-        tableView.backgroundColor = .white
+        tableView.backgroundColor = AppColor.shadowColor
     }
 }
 

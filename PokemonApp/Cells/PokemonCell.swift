@@ -2,10 +2,10 @@ import UIKit
 
 final class PokemonCell: UITableViewCell {
     // MARK: - Constants
-    private let pokemonLabel = PokemonUILabel(height: 25, fontSize: 21, fontColor: .black)
+    private let pokemonLabel = PokemonUILabel(height: 25, fontSize: 21, fontColor: AppColor.blackColor)
 
     // MARK: - Variables
-    var paginationLabel = PokemonUILabel(height: 25, fontSize: 17, fontColor: .black)
+    var paginationLabel = PokemonUILabel(height: 25, fontSize: 17, fontColor: AppColor.blackColor)
 
     // MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
