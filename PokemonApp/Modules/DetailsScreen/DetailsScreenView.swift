@@ -10,32 +10,39 @@ protocol DetailsView: AnyObject {
 
 final class DetailsScreenView: UIViewController {
     // MARK: - Constants
+    private let pokemonImageView = PokemonUIImageView(
+        imageName: "person.circle",
+        contentMode: .scaleAspectFit
+    )
     private let pokemonStackView = PokemonUIStackView(
         axis: .vertical,
         alignment: .leading,
         distribution: .equalSpacing,
         height: 125
     )
-    private let pokemonImageView = UIImageView()
     private let pokemonNameLabel = PokemonUILabel(
+        text: "Pokemon name: -",
         height: 25,
         fontSize: 21,
         fontWeight: .medium,
         fontColor: AppColor.blackColor
     )
     private let pokemonTypeLabel = PokemonUILabel(
+        text: "Type: -",
         height: 25,
         fontSize: 21,
         fontWeight: .regular,
         fontColor: AppColor.blackColor
     )
     private let pokemonHeightLabel = PokemonUILabel(
+        text: "Height: - cm",
         height: 25,
         fontSize: 17,
         fontWeight: .light,
         fontColor: AppColor.blackColor
     )
     private let pokemonWeightLabel = PokemonUILabel(
+        text: "Weight: - kg",
         height: 25,
         fontSize: 17,
         fontWeight: .light,
@@ -72,7 +79,6 @@ final class DetailsScreenView: UIViewController {
             padding: .init(top: 250, left: 0, bottom: 0, right: 0),
             size: .init(width: 200, height: 200)
         )
-        pokemonImageView.contentMode = .scaleAspectFit
     }
 
     private func setupPokemonUIStackView() {

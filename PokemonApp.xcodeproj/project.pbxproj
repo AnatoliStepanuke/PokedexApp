@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC46E06C2923E2AC00A1448C /* PokemonUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46E06B2923E2AC00A1448C /* PokemonUIImageView.swift */; };
 		DC679F16291C00D200AB8402 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = DC679F15291C00D200AB8402 /* Alamofire */; };
 		DC679F20291D274000AB8402 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC679F1F291D274000AB8402 /* AppColor.swift */; };
 		DC679F23291D2B1100AB8402 /* PokemonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC679F22291D2B1100AB8402 /* PokemonCell.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DC46E06B2923E2AC00A1448C /* PokemonUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonUIImageView.swift; sourceTree = "<group>"; };
 		DC679F1F291D274000AB8402 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		DC679F22291D2B1100AB8402 /* PokemonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCell.swift; sourceTree = "<group>"; };
 		DC679F25291D2B8F00AB8402 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
@@ -69,6 +71,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DC46E06A2923E28400A1448C /* UIImageView */ = {
+			isa = PBXGroup;
+			children = (
+				DC46E06B2923E2AC00A1448C /* PokemonUIImageView.swift */,
+			);
+			path = UIImageView;
+			sourceTree = "<group>";
+		};
 		DC679F1A291D223C00AB8402 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,8 +119,9 @@
 		DC679F39291E98CD00AB8402 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
-				DC679F3D291EA1AD00AB8402 /* UIStackView */,
+				DC46E06A2923E28400A1448C /* UIImageView */,
 				DC679F3A291E98E300AB8402 /* UILabel */,
+				DC679F3D291EA1AD00AB8402 /* UIStackView */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -365,6 +376,7 @@
 				DC9F9E72292301760090CC4E /* UIStackView+AddingArrangedSubviews.swift in Sources */,
 				DC9F9E692922CE760090CC4E /* PokemonDetails.swift in Sources */,
 				DC94C60929216B9C000AB7B2 /* PokemonListView.swift in Sources */,
+				DC46E06C2923E2AC00A1448C /* PokemonUIImageView.swift in Sources */,
 				DC6B9126291ABED8007505AF /* AppDelegate.swift in Sources */,
 				DC9F9E672922CD1D0090CC4E /* UIView+AddSubviews.swift in Sources */,
 				DC94C60B29216C0C000AB7B2 /* PokemonListPresenter.swift in Sources */,
