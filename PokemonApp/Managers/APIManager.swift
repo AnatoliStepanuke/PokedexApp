@@ -5,10 +5,6 @@ final class APIManager {
     // MARK: - Properties
     private var baseURLEndPoint: String = Constants.baseURL + Constants.endPoint
 
-    // MARK: - Init
-    private init() { }
-    static let instance = APIManager()
-
     // MARK: - API
     func getPokemonsNextPage(completion: @escaping((Result) -> Void)) {
         AF.request(Constants.baseURL + Constants.endPoint).responseDecodable(of: Result.self) { response in

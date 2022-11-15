@@ -98,12 +98,12 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		DC679F27291D31D700AB8402 /* Manager */ = {
+		DC679F27291D31D700AB8402 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
 				DC679F28291D31EB00AB8402 /* APIManager.swift */,
 			);
-			path = Manager;
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		DC679F39291E98CD00AB8402 /* Custom */ = {
@@ -156,7 +156,7 @@
 				DC6B913D291AC65E007505AF /* Delegates */,
 				DC679F1A291D223C00AB8402 /* Extensions */,
 				DC6B9133291ABEDA007505AF /* Info.plist */,
-				DC679F27291D31D700AB8402 /* Manager */,
+				DC679F27291D31D700AB8402 /* Managers */,
 				DC679F24291D2B7E00AB8402 /* Models */,
 				DC94C60629216B43000AB7B2 /* Modules */,
 				DC6B9140291AC68A007505AF /* Storyboards */,
