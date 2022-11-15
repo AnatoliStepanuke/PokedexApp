@@ -5,7 +5,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     // MARK: - Constants
-    private let rootViewController = ViewController()
+    private let navigationController = UINavigationController()
+    private let rootViewController = PokemonListView()
 
     // MARK: - UIScene
     func scene(
@@ -14,10 +15,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         options connectionOptions: UIScene.ConnectionOptions
     ) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = rootViewController
+        window = UIWindow(windowScene: windowScene)
+        let view = rootViewController
+        let presenter = PokemonListPresenter(listView: view)
+        view.listPresenter = presenter
+        navigationController.pushViewController(view, animated: true)
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
-        window?.windowScene = windowScene
     }
 
     func sceneDidDisconnect(_ scene: UIScene) { }
