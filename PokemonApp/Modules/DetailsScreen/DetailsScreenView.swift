@@ -17,10 +17,30 @@ final class DetailsScreenView: UIViewController {
         height: 125
     )
     private let pokemonImageView = UIImageView()
-    private let pokemonNameLabel = PokemonUILabel(height: 25, fontSize: 21, fontWeight: .medium, fontColor: .black)
-    private let pokemonTypeLabel = PokemonUILabel(height: 25, fontSize: 21, fontWeight: .regular, fontColor: .black)
-    private let pokemonHeightLabel = PokemonUILabel(height: 25, fontSize: 17, fontWeight: .light, fontColor: .black)
-    private let pokemonWeightLabel = PokemonUILabel(height: 25, fontSize: 17, fontWeight: .light, fontColor: .black)
+    private let pokemonNameLabel = PokemonUILabel(
+        height: 25,
+        fontSize: 21,
+        fontWeight: .medium,
+        fontColor: AppColor.blackColor
+    )
+    private let pokemonTypeLabel = PokemonUILabel(
+        height: 25,
+        fontSize: 21,
+        fontWeight: .regular,
+        fontColor: AppColor.blackColor
+    )
+    private let pokemonHeightLabel = PokemonUILabel(
+        height: 25,
+        fontSize: 17,
+        fontWeight: .light,
+        fontColor: AppColor.blackColor
+    )
+    private let pokemonWeightLabel = PokemonUILabel(
+        height: 25,
+        fontSize: 17,
+        fontWeight: .light,
+        fontColor: AppColor.blackColor
+    )
 
     // MARK: - Properties
     var detailsPresenter: DetailsPresenter?
