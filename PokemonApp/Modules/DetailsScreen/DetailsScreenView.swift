@@ -6,10 +6,12 @@ protocol DetailsView: AnyObject {
     func setPokemonType(types: [TypeElement])
     func setPokemonHeight(height: Int)
     func setPokemonWeight(weight: Int)
+    func stopActivityIndicator(isAnimating: Bool, setClearColor: UIColor)
 }
 
 final class DetailsScreenView: UIViewController {
     // MARK: - Constants
+    private let activityIndicatorView = PokemonActivityIndicatorUIView(style: .large, isAnimating: true)
     private let pokemonImageView = PokemonUIImageView(
         imageName: "person.circle",
         contentMode: .scaleAspectFit
@@ -56,20 +58,27 @@ final class DetailsScreenView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        setupActivityIndicatorView()
         setupPokemonImageView()
         setupPokemonUIStackView()
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        if let detailsPresenter = detailsPresenter { detailsPresenter.loadPokemonDetails() }
+        if let detailsPresenter = detailsPresenter {
+            detailsPresenter.loadPokemonDetails()
+            detailsPresenter.stopActivityIndicator()
+        }
     }
 
     // MARK: - Setups
     private func setupView() {
         view.backgroundColor = AppColor.shadowColor
-        view.addSubviews(pokemonImageView, pokemonStackView)
+        view.addSubviews(pokemonImageView, pokemonStackView, activityIndicatorView)
     }
-
+    private func setupActivityIndicatorView() {
+        activityIndicatorView.frame = view.frame
+        activityIndicatorView.indicator.frame = view.frame
+    }
     private func setupPokemonImageView() {
         pokemonImageView.anchor(
             top: view.topAnchor,
@@ -80,7 +89,6 @@ final class DetailsScreenView: UIViewController {
             size: .init(width: 200, height: 200)
         )
     }
-
     private func setupPokemonUIStackView() {
         pokemonStackView.anchor(
             top: pokemonImageView.bottomAnchor,
@@ -100,23 +108,17 @@ final class DetailsScreenView: UIViewController {
 
 extension DetailsScreenView: DetailsView {
     // MARK: - API
-    func setPokemonImage(image: UIImage) {
-        pokemonImageView.image = image
-    }
-
-    func setPokemonName(name: String) {
-        pokemonNameLabel.text = "Pokemon name: \(name)"
-    }
-
-    func setPokemonType(types: [TypeElement]) {
-        for type in types { pokemonTypeLabel.text = "Type: \(type.type.name)" }
-    }
-
-    func setPokemonHeight(height: Int) {
-        pokemonHeightLabel.text = "Height: \(height * 100) cm"
-    }
-
-    func setPokemonWeight(weight: Int) {
-        pokemonWeightLabel.text = "Weight: \(weight / 10) kg"
+    func setPokemonImage(image: UIImage) { pokemonImageView.image = image }
+    func setPokemonName(name: String) { pokemonNameLabel.text = "Pokemon name: \(name)" }
+    func setPokemonType(types: [TypeElement]) { for type in types { pokemonTypeLabel.text = "Type: \(type.type.name)" }}
+    func setPokemonHeight(height: Int) { pokemonHeightLabel.text = "Height: \(height * 100) cm" }
+    func setPokemonWeight(weight: Int) { pokemonWeightLabel.text = "Weight: \(weight / 10) kg" }
+    func stopActivityIndicator(isAnimating: Bool, setClearColor: UIColor) {
+        switch isAnimating {
+        case true: activityIndicatorView.indicator.startAnimating()
+        case false:
+            activityIndicatorView.indicator.stopAnimating()
+            activityIndicatorView.backgroundColor = setClearColor
+        }
     }
 }

@@ -2,6 +2,7 @@ import UIKit
 
 protocol DetailsPresenter {
     func loadPokemonDetails()
+    func stopActivityIndicator()
 }
 
 final class DetailsScreenPresenter: DetailsPresenter {
@@ -31,5 +32,9 @@ final class DetailsScreenPresenter: DetailsPresenter {
                 }
             }
         }
+    }
+
+    func stopActivityIndicator() {
+        detailsView.stopActivityIndicator(isAnimating: false, setClearColor: AppColor.clearColor)
     }
 }
