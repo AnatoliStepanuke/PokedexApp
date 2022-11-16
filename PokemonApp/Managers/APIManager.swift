@@ -2,18 +2,24 @@ import Alamofire
 import UIKit
 
 final class APIManager {
+    // MARK: - Enum
+    enum AppError: Error {
+        case networkError(message: String)
+    }
+
     // MARK: - Properties
     private var baseURLEndPoint: String = Constants.baseURL + Constants.endPoint
 
     // MARK: - API
-    func getPokemonsNextPage(completion: @escaping((Result) -> Void)) {
-        AF.request(Constants.baseURL + Constants.endPoint).responseDecodable(of: Result.self) { response in
+    func getPokemonsNextPage(completion: @escaping((Result<ServerModel, AppError>) -> Void)) {
+        AF.request(Constants.baseURL + Constants.endPoint).responseDecodable(of: ServerModel.self) { response in
             switch response.result {
             case .success(let data):
                 print(response)
-                completion(data)
+                completion(.success(data))
                 self.baseURLEndPoint = data.nextPage
-            case .failure(let error): print(error)
+            case .failure(let error):
+                completion(.failure(.networkError(message: error.localizedDescription)))
             }
         }
     }
