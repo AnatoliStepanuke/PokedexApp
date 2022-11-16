@@ -26,7 +26,6 @@ final class APIManager {
     func getPokemonDetails(pokemonId: Int, completion: @escaping ((Result<PokemonDetails, AppError>) -> Void)) {
         AF.request(Constants.baseURL + Constants.endPointSlash + "\(pokemonId)")
             .responseDecodable(of: PokemonDetails.self) { response in
-                print(response)
             switch response.result {
             case .success(let data): completion(.success(data))
             case .failure(let error): completion(.failure(.networkError(message: error.localizedDescription)))
@@ -34,16 +33,16 @@ final class APIManager {
         }
     }
 
-    func loadImage(imageLink: String, completion: @escaping ((UIImage) -> Void)) {
+    func loadImage(imageLink: String, completion: @escaping ((Result<UIImage, AppError>) -> Void)) {
         DispatchQueue.global().async {
             guard let url = URL(string: imageLink) else { return }
             do {
                 let data = try Data(contentsOf: url)
                 if let image = UIImage(data: data) {
-                    completion(image)
+                    completion(.success(image))
                 }
             } catch {
-                print(error)
+                completion(.failure(.networkError(message: error.localizedDescription)))
             }
         }
     }

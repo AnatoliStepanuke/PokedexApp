@@ -25,13 +25,18 @@ final class DetailsScreenPresenter: DetailsPresenter {
         networkManager.getPokemonDetails(pokemonId: pokemonId) { [weak self] result in
             switch result {
             case .success(let pokemon):
-                self?.networkManager.loadImage(imageLink: pokemon.sprites.frontDefault ?? "") { [weak self] image in
+                self?.detailsView.setPokemonName(name: pokemon.name)
+                self?.detailsView.setPokemonType(types: pokemon.types)
+                self?.detailsView.setPokemonHeight(height: pokemon.height)
+                self?.detailsView.setPokemonWeight(weight: pokemon.weight)
+                self?.networkManager.loadImage(imageLink: pokemon.sprites.frontDefault ?? "") { [weak self] result in
                     DispatchQueue.main.async {
-                        self?.detailsView.setPokemonImage(image: image)
-                        self?.detailsView.setPokemonName(name: pokemon.name)
-                        self?.detailsView.setPokemonType(types: pokemon.types)
-                        self?.detailsView.setPokemonHeight(height: pokemon.height)
-                        self?.detailsView.setPokemonWeight(weight: pokemon.weight)
+                        switch result {
+                        case .success(let image):
+                            self?.detailsView.setPokemonImage(image: image)
+                        case .failure(let error):
+                            self?.detailsView.showAlertError(message: error.localizedDescription)
+                        }
                     }
                 }
             case .failure(let error): self?.detailsView.showAlertError(message: error.localizedDescription)
