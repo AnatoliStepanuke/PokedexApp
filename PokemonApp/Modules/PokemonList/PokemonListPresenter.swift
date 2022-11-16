@@ -12,13 +12,20 @@ final class PokemonListPresenter: ListPresenter {
     unowned let listView: ListView
     private let networkManager: APIManager
     private let alertManager: AlertManager
+    private let userDefaultsManager: UserDefaultsManager
 
     // MARK: - Properties
     // MARK: - Lifecycle
-    init(listView: ListView, networkManager: APIManager, alertManager: AlertManager) {
+    init(
+        listView: ListView,
+        networkManager: APIManager,
+        alertManager: AlertManager,
+        userDefaultsManager: UserDefaultsManager
+    ) {
         self.listView = listView
         self.networkManager = networkManager
         self.alertManager = alertManager
+        self.userDefaultsManager = userDefaultsManager
     }
 
     // MARK: - API
@@ -33,7 +40,12 @@ final class PokemonListPresenter: ListPresenter {
 
     func transitionToDeatailsModule(pokemonId: Int) {
         let view = DetailsScreenView(alertManager: alertManager)
-        let presenter = DetailsScreenPresenter(detailsView: view, pokemonId: pokemonId, networkManager: networkManager)
+        let presenter = DetailsScreenPresenter(
+            detailsView: view,
+            pokemonId: pokemonId,
+            networkManager: networkManager,
+            userDefaultsManager: userDefaultsManager
+        )
         view.detailsPresenter = presenter
         listView.setTransition(view: view, presenter: presenter)
     }

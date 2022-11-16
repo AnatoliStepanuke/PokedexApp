@@ -8,6 +8,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private let navigationController = UINavigationController()
     private let networkManager = APIManager()
     private let alertManager = AlertManager()
+    private let userDefaultsManager = UserDefaultsManager()
 
     // MARK: - UIScene
     func scene(
@@ -18,7 +19,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         let view = PokemonListView(alertManager: alertManager)
-        let presenter = PokemonListPresenter(listView: view, networkManager: networkManager, alertManager: alertManager)
+        let presenter = PokemonListPresenter(
+            listView: view,
+            networkManager: networkManager,
+            alertManager: alertManager,
+            userDefaultsManager: userDefaultsManager
+        )
         view.listPresenter = presenter
         navigationController.pushViewController(view, animated: true)
         window?.rootViewController = navigationController

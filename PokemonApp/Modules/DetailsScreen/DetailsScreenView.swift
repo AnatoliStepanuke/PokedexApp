@@ -9,10 +9,12 @@ protocol DetailsView: AnyObject, ActivityIndicatorView, ShowAlert {
     func startActivityIndicator() -> PokemonActivityIndicatorUIView
     func stopActivityIndicator() -> PokemonActivityIndicatorUIView
     func showAlertError(message: String)
+    func setSavedPokemons(savedPokemons: [PokemonDetails])
 }
 
 final class DetailsScreenView: UIViewController {
     // MARK: - Constants
+    private let alertManager: AlertManager
     private let activityIndicatorView = PokemonActivityIndicatorUIView(style: .large, color: AppColor.fadingEffect)
     private let pokemonImageView = PokemonUIImageView(
         imageName: "person.circle",
@@ -52,7 +54,6 @@ final class DetailsScreenView: UIViewController {
         fontWeight: .light,
         fontColor: AppColor.blackColor
     )
-    private let alertManager: AlertManager
 
     // MARK: - Init
     init(alertManager: AlertManager) {
@@ -65,6 +66,10 @@ final class DetailsScreenView: UIViewController {
     }
 
     // MARK: - Properties
+    // Private
+    private var savedPokemons: [PokemonDetails] = []
+
+    // Public
     var detailsPresenter: DetailsPresenter?
 
     // MARK: - Lifecycle
@@ -80,7 +85,6 @@ final class DetailsScreenView: UIViewController {
         if let detailsPresenter = detailsPresenter {
             detailsPresenter.loadPokemonDetails()
             detailsPresenter.stopActivityIndicator()
-            activityIndicatorView.removeFromSuperview()
         }
     }
 
@@ -157,4 +161,6 @@ extension DetailsScreenView: DetailsView {
     func stopActivityIndicator() -> PokemonActivityIndicatorUIView { return activityIndicatorView }
 
     func showAlertError(message: String) { present(alertManager.showAlertError(message: message), animated: true) }
+
+    func setSavedPokemons(savedPokemons: [PokemonDetails]) { self.savedPokemons += savedPokemons }
 }

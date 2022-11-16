@@ -4,6 +4,7 @@ protocol DetailsPresenter: ActivityIndicatorPresenter {
     func loadPokemonDetails()
     func startActivityIndicator()
     func stopActivityIndicator()
+    func getPokemonsFromUserDefaults()
 }
 
 final class DetailsScreenPresenter: DetailsPresenter {
@@ -11,13 +12,20 @@ final class DetailsScreenPresenter: DetailsPresenter {
     unowned let detailsView: DetailsView
     private let pokemonId: Int
     private let networkManager: APIManager
+    private let userDefaultsManager: UserDefaultsManager
 
     // MARK: - Properties
     // MARK: - Lifecycle
-    init(detailsView: DetailsView, pokemonId: Int, networkManager: APIManager) {
+    init(
+        detailsView: DetailsView,
+        pokemonId: Int,
+        networkManager: APIManager,
+        userDefaultsManager: UserDefaultsManager
+    ) {
         self.detailsView = detailsView
         self.pokemonId = pokemonId
         self.networkManager = networkManager
+        self.userDefaultsManager = userDefaultsManager
     }
 
     // MARK: - API
@@ -29,15 +37,19 @@ final class DetailsScreenPresenter: DetailsPresenter {
                 self?.detailsView.setPokemonType(types: pokemon.types)
                 self?.detailsView.setPokemonHeight(height: pokemon.height)
                 self?.detailsView.setPokemonWeight(weight: pokemon.weight)
+                self?.userDefaultsManager.savePokemonToUserDefaults(pokemon: pokemon)
                 self?.networkManager.loadImage(imageLink: pokemon.sprites.frontDefault ?? "") { [weak self] result in
                     DispatchQueue.main.async {
                         switch result {
-                        case .success(let image): self?.detailsView.setPokemonImage(image: image)
+                        case .success(let image):
+                            self?.detailsView.setPokemonImage(image: image)
                         case .failure(let error): self?.detailsView.showAlertError(message: error.localizedDescription)
                         }
                     }
                 }
-            case .failure(let error): self?.detailsView.showAlertError(message: error.localizedDescription)
+            case .failure(let error):
+                self?.detailsView.showAlertError(message: error.localizedDescription)
+                self?.getPokemonsFromUserDefaults()
             }
         }
     }
@@ -48,5 +60,9 @@ final class DetailsScreenPresenter: DetailsPresenter {
         detailsView.stopActivityIndicator().indicator.stopAnimating()
         detailsView.stopActivityIndicator().backgroundColor = AppColor.clearColor
         detailsView.stopActivityIndicator().removeFromSuperview()
+    }
+
+    func getPokemonsFromUserDefaults() {
+        detailsView.setSavedPokemons(savedPokemons: userDefaultsManager.getPokemonsFromUserDefaults())
     }
 }
