@@ -1,8 +1,10 @@
 import Foundation
 
-protocol ListPresenter {
+protocol ListPresenter: ActivityIndicatorPresenter {
     func loadAllPokemonsPages()
     func transitionToDeatailsModule(pokemonId: Int)
+    func startActivityIndicator()
+    func stopActivityIndicator()
 }
 
 final class PokemonListPresenter: ListPresenter {
@@ -29,5 +31,13 @@ final class PokemonListPresenter: ListPresenter {
         let presenter = DetailsScreenPresenter(detailsView: view, pokemonId: pokemonId, networkManager: networkManager)
         view.detailsPresenter = presenter
         listView.setTransition(view: view, presenter: presenter)
+    }
+
+    func startActivityIndicator() { listView.startActivityIndicator().indicator.startAnimating() }
+
+    func stopActivityIndicator() {
+        listView.stopActivityIndicator().indicator.stopAnimating()
+        listView.stopActivityIndicator().backgroundColor = AppColor.clearColor
+        listView.stopActivityIndicator().removeFromSuperview()
     }
 }

@@ -20,7 +20,9 @@ extension PokemonListView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == pokemons.count - 1 {
             if let listPresenter = listPresenter {
+                listPresenter.startActivityIndicator()
                 listPresenter.loadAllPokemonsPages()
+                listPresenter.stopActivityIndicator()
             }
         }
     }

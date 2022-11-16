@@ -1,16 +1,27 @@
 import UIKit
 
-final class PokemonActivityIndicatorUIView: UIView {
-    // MARK: - Init
-    let indicator = UIActivityIndicatorView(style: .large)
+protocol ActivityIndicatorPresenter {
+    func startActivityIndicator()
+    func stopActivityIndicator()
+}
 
+protocol ActivityIndicatorView {
+    func startActivityIndicator() -> PokemonActivityIndicatorUIView
+    func stopActivityIndicator() -> PokemonActivityIndicatorUIView
+}
+
+final class PokemonActivityIndicatorUIView: UIView {
+    // MARK: - Constants
+    let indicator = UIActivityIndicatorView()
+
+    // MARK: - Init
     init(
         style: UIActivityIndicatorView.Style,
-        isAnimating: Bool
+        color: UIColor
     ) {
         super.init(frame: .zero)
-        setupColor(color: AppColor.fadingEffect)
-        setupActivityIndicator(style: style, activityIndicatorIsActive: isAnimating)
+        setupBackgroundColor(color: color)
+        setupIndicator(style: style)
     }
 
     required init(coder: NSCoder) {
@@ -18,17 +29,13 @@ final class PokemonActivityIndicatorUIView: UIView {
     }
 
     // MARK: - Setups
-    private func setupColor(color: UIColor) {
+    private func setupBackgroundColor(color: UIColor) {
         backgroundColor = color
     }
 
-    private func setupActivityIndicator(style: UIActivityIndicatorView.Style, activityIndicatorIsActive: Bool) {
+    private func setupIndicator(style: UIActivityIndicatorView.Style) {
         addSubview(indicator)
         indicator.color = .white
         indicator.style = style
-        switch activityIndicatorIsActive {
-        case true: indicator.startAnimating()
-        case false: indicator.stopAnimating()
-        }
     }
 }
