@@ -55,6 +55,7 @@ final class PokemonListView: UIViewController {
     private func setupNavigationController() {
         title = "Pokemon List"
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.barTintColor = AppColor.shadowColor
     }
 
     private func setupActivityIndicatorView() {
