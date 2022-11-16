@@ -15,7 +15,6 @@ final class APIManager {
         AF.request(Constants.baseURL + Constants.endPoint).responseDecodable(of: ServerModel.self) { response in
             switch response.result {
             case .success(let data):
-                print(response)
                 completion(.success(data))
                 self.baseURLEndPoint = data.nextPage
             case .failure(let error):
@@ -24,13 +23,13 @@ final class APIManager {
         }
     }
 
-    func getPokemonDetails(pokemonId: Int, completion: @escaping ((PokemonDetails) -> Void)) {
+    func getPokemonDetails(pokemonId: Int, completion: @escaping ((Result<PokemonDetails, AppError>) -> Void)) {
         AF.request(Constants.baseURL + Constants.endPointSlash + "\(pokemonId)")
             .responseDecodable(of: PokemonDetails.self) { response in
                 print(response)
             switch response.result {
-            case .success(let data): completion(data)
-            case .failure(let error): print(error)
+            case .success(let data): completion(.success(data))
+            case .failure(let error): completion(.failure(.networkError(message: error.localizedDescription)))
             }
         }
     }

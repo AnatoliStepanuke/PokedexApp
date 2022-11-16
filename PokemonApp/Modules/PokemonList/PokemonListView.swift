@@ -5,6 +5,7 @@ protocol ListView: AnyObject, ActivityIndicatorView {
     func setTransition(view: DetailsScreenView, presenter: DetailsScreenPresenter)
     func startActivityIndicator() -> PokemonActivityIndicatorUIView
     func stopActivityIndicator() -> PokemonActivityIndicatorUIView
+    func showAlertError(message: String)
 }
 
 final class PokemonListView: UIViewController {
@@ -12,6 +13,17 @@ final class PokemonListView: UIViewController {
     // Private
     private let tableView = UITableView()
     private let activityIndicatorView = PokemonActivityIndicatorUIView(style: .large, color: AppColor.fadingEffect)
+    private let alertManager: AlertManager
+
+    // MARK: - Init
+    init(alertManager: AlertManager) {
+        self.alertManager = alertManager
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     // MARK: - Properties
     // Public
@@ -80,4 +92,6 @@ extension PokemonListView: ListView {
     func startActivityIndicator() -> PokemonActivityIndicatorUIView { return activityIndicatorView }
 
     func stopActivityIndicator() -> PokemonActivityIndicatorUIView { return activityIndicatorView }
+
+    func showAlertError(message: String) { present(alertManager.showAlertError(message: message), animated: true) }
 }

@@ -11,23 +11,28 @@ final class PokemonListPresenter: ListPresenter {
     // MARK: - Constants
     unowned let listView: ListView
     private let networkManager: APIManager
+    private let alertManager: AlertManager
 
     // MARK: - Properties
     // MARK: - Lifecycle
-    init(listView: ListView, networkManager: APIManager) {
+    init(listView: ListView, networkManager: APIManager, alertManager: AlertManager) {
         self.listView = listView
         self.networkManager = networkManager
+        self.alertManager = alertManager
     }
 
     // MARK: - API
     func loadAllPokemonsPages() {
-        networkManager.getPokemonsNextPage { [weak self] results in
-            self?.listView.setPokemons(pokemons: results.results)
+        networkManager.getPokemonsNextPage { [weak self] result in
+            switch result {
+            case .success(let models): self?.listView.setPokemons(pokemons: models.results)
+            case.failure(let error): self?.listView.showAlertError(message: error.localizedDescription)
+            }
         }
     }
 
     func transitionToDeatailsModule(pokemonId: Int) {
-        let view = DetailsScreenView()
+        let view = DetailsScreenView(alertManager: alertManager)
         let presenter = DetailsScreenPresenter(detailsView: view, pokemonId: pokemonId, networkManager: networkManager)
         view.detailsPresenter = presenter
         listView.setTransition(view: view, presenter: presenter)

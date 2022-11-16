@@ -8,6 +8,7 @@ protocol DetailsView: AnyObject, ActivityIndicatorView {
     func setPokemonWeight(weight: Int)
     func startActivityIndicator() -> PokemonActivityIndicatorUIView
     func stopActivityIndicator() -> PokemonActivityIndicatorUIView
+    func showAlertError(message: String)
 }
 
 final class DetailsScreenView: UIViewController {
@@ -51,6 +52,17 @@ final class DetailsScreenView: UIViewController {
         fontWeight: .light,
         fontColor: AppColor.blackColor
     )
+    private let alertManager: AlertManager
+
+    // MARK: - Init
+    init(alertManager: AlertManager) {
+        self.alertManager = alertManager
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     // MARK: - Properties
     var detailsPresenter: DetailsPresenter?
@@ -143,4 +155,6 @@ extension DetailsScreenView: DetailsView {
     func startActivityIndicator() -> PokemonActivityIndicatorUIView { return activityIndicatorView }
 
     func stopActivityIndicator() -> PokemonActivityIndicatorUIView { return activityIndicatorView }
+
+    func showAlertError(message: String) { present(alertManager.showAlertError(message: message), animated: true) }
 }

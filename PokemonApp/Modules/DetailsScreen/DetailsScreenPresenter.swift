@@ -22,15 +22,19 @@ final class DetailsScreenPresenter: DetailsPresenter {
 
     // MARK: - API
     func loadPokemonDetails() {
-        networkManager.getPokemonDetails(pokemonId: pokemonId) { [weak self] pokemon in
-            self?.networkManager.loadImage(imageLink: pokemon.sprites.frontDefault ?? "") { [weak self] image in
-                DispatchQueue.main.async {
-                    self?.detailsView.setPokemonImage(image: image)
-                    self?.detailsView.setPokemonName(name: pokemon.name)
-                    self?.detailsView.setPokemonType(types: pokemon.types)
-                    self?.detailsView.setPokemonHeight(height: pokemon.height)
-                    self?.detailsView.setPokemonWeight(weight: pokemon.weight)
+        networkManager.getPokemonDetails(pokemonId: pokemonId) { [weak self] result in
+            switch result {
+            case .success(let pokemon):
+                self?.networkManager.loadImage(imageLink: pokemon.sprites.frontDefault ?? "") { [weak self] image in
+                    DispatchQueue.main.async {
+                        self?.detailsView.setPokemonImage(image: image)
+                        self?.detailsView.setPokemonName(name: pokemon.name)
+                        self?.detailsView.setPokemonType(types: pokemon.types)
+                        self?.detailsView.setPokemonHeight(height: pokemon.height)
+                        self?.detailsView.setPokemonWeight(weight: pokemon.weight)
+                    }
                 }
+            case .failure(let error): self?.detailsView.showAlertError(message: error.localizedDescription)
             }
         }
     }
