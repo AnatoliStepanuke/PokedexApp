@@ -35,14 +35,17 @@ final class APIManager {
 
     func loadImage(imageLink: String, completion: @escaping ((Result<UIImage, AppError>) -> Void)) {
         DispatchQueue.global().async {
-            guard let url = URL(string: imageLink) else { return }
-            do {
-                let data = try Data(contentsOf: url)
-                if let image = UIImage(data: data) {
-                    completion(.success(image))
+            if let url = URL(string: imageLink) {
+                do {
+                    let data = try Data(contentsOf: url)
+                    if let image = UIImage(data: data) {
+                        completion(.success(image))
+                    }
+                } catch {
+                    completion(.failure(.networkError(message: error.localizedDescription)))
                 }
-            } catch {
-                completion(.failure(.networkError(message: error.localizedDescription)))
+            } else {
+                completion(.failure(.networkError(message: "URL not found")))
             }
         }
     }

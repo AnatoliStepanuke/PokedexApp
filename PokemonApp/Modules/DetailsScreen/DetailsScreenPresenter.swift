@@ -32,10 +32,8 @@ final class DetailsScreenPresenter: DetailsPresenter {
                 self?.networkManager.loadImage(imageLink: pokemon.sprites.frontDefault ?? "") { [weak self] result in
                     DispatchQueue.main.async {
                         switch result {
-                        case .success(let image):
-                            self?.detailsView.setPokemonImage(image: image)
-                        case .failure(let error):
-                            self?.detailsView.showAlertError(message: error.localizedDescription)
+                        case .success(let image): self?.detailsView.setPokemonImage(image: image)
+                        case .failure(let error): self?.detailsView.showAlertError(message: error.localizedDescription)
                         }
                     }
                 }
