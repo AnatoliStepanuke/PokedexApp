@@ -1,6 +1,6 @@
 import UIKit
 
-protocol DetailsView: AnyObject, ActivityIndicatorView {
+protocol DetailsView: AnyObject, ActivityIndicatorView, ShowAlert {
     func setPokemonImage(image: UIImage)
     func setPokemonName(name: String)
     func setPokemonType(types: [TypeElement])

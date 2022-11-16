@@ -1,6 +1,6 @@
 import UIKit
 
-protocol ListView: AnyObject, ActivityIndicatorView {
+protocol ListView: AnyObject, ActivityIndicatorView, ShowAlert {
     func setPokemons(pokemons: [Pokemon])
     func setTransition(view: DetailsScreenView, presenter: DetailsScreenPresenter)
     func startActivityIndicator() -> PokemonActivityIndicatorUIView

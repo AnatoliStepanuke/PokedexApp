@@ -1,5 +1,9 @@
 import UIKit
 
+protocol ShowAlert {
+    func showAlertError(message: String)
+}
+
 final class AlertManager {
     // MARK: - Helpers
     private func showAlert(title: String, message: String) -> UIAlertController {
