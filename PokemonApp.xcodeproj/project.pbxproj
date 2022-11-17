@@ -12,6 +12,8 @@
 		DC46E0712925459B00A1448C /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46E0702925459B00A1448C /* AlertManager.swift */; };
 		DC46E0732925610600A1448C /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46E0722925610600A1448C /* UserDefaultsManager.swift */; };
 		DC46E076292561EB00A1448C /* UserManager+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46E075292561EB00A1448C /* UserManager+Constants.swift */; };
+		DC46E07F2925A85D00A1448C /* PokemonAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46E07E2925A85D00A1448C /* PokemonAppTests.swift */; };
+		DC46E0872925ADE200A1448C /* TestNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46E0862925ADE200A1448C /* TestNetwork.swift */; };
 		DC679F16291C00D200AB8402 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = DC679F15291C00D200AB8402 /* Alamofire */; };
 		DC679F20291D274000AB8402 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC679F1F291D274000AB8402 /* AppColor.swift */; };
 		DC679F23291D2B1100AB8402 /* PokemonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC679F22291D2B1100AB8402 /* PokemonCell.swift */; };
@@ -36,12 +38,25 @@
 		DC9F9E72292301760090CC4E /* UIStackView+AddingArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9F9E71292301760090CC4E /* UIStackView+AddingArrangedSubviews.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		DC46E0802925A85D00A1448C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DC6B911A291ABED8007505AF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DC6B9121291ABED8007505AF;
+			remoteInfo = PokemonApp;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		DC46E06B2923E2AC00A1448C /* PokemonUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonUIImageView.swift; sourceTree = "<group>"; };
 		DC46E06E2923E87C00A1448C /* PokemonActivityIndicatorUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonActivityIndicatorUIView.swift; sourceTree = "<group>"; };
 		DC46E0702925459B00A1448C /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		DC46E0722925610600A1448C /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		DC46E075292561EB00A1448C /* UserManager+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserManager+Constants.swift"; sourceTree = "<group>"; };
+		DC46E07C2925A85D00A1448C /* PokemonAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokemonAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC46E07E2925A85D00A1448C /* PokemonAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonAppTests.swift; sourceTree = "<group>"; };
+		DC46E0862925ADE200A1448C /* TestNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNetwork.swift; sourceTree = "<group>"; };
 		DC679F1F291D274000AB8402 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		DC679F22291D2B1100AB8402 /* PokemonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCell.swift; sourceTree = "<group>"; };
 		DC679F25291D2B8F00AB8402 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
@@ -68,6 +83,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		DC46E0792925A85D00A1448C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DC6B911F291ABED8007505AF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -101,6 +123,23 @@
 				DC46E075292561EB00A1448C /* UserManager+Constants.swift */,
 			);
 			path = UserManager;
+			sourceTree = "<group>";
+		};
+		DC46E07D2925A85D00A1448C /* PokemonAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				DC46E0852925ADB700A1448C /* APIManager */,
+				DC46E07E2925A85D00A1448C /* PokemonAppTests.swift */,
+			);
+			path = PokemonAppTests;
+			sourceTree = "<group>";
+		};
+		DC46E0852925ADB700A1448C /* APIManager */ = {
+			isa = PBXGroup;
+			children = (
+				DC46E0862925ADE200A1448C /* TestNetwork.swift */,
+			);
+			path = APIManager;
 			sourceTree = "<group>";
 		};
 		DC679F1A291D223C00AB8402 /* Extensions */ = {
@@ -174,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				DC6B9124291ABED8007505AF /* PokemonApp */,
+				DC46E07D2925A85D00A1448C /* PokemonAppTests */,
 				DC6B9123291ABED8007505AF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -182,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				DC6B9122291ABED8007505AF /* PokemonApp.app */,
+				DC46E07C2925A85D00A1448C /* PokemonAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -300,6 +341,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		DC46E07B2925A85D00A1448C /* PokemonAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DC46E0822925A85D00A1448C /* Build configuration list for PBXNativeTarget "PokemonAppTests" */;
+			buildPhases = (
+				DC46E0782925A85D00A1448C /* Sources */,
+				DC46E0792925A85D00A1448C /* Frameworks */,
+				DC46E07A2925A85D00A1448C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DC46E0812925A85D00A1448C /* PBXTargetDependency */,
+			);
+			name = PokemonAppTests;
+			productName = PokemonAppTests;
+			productReference = DC46E07C2925A85D00A1448C /* PokemonAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		DC6B9121291ABED8007505AF /* PokemonApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DC6B9136291ABEDA007505AF /* Build configuration list for PBXNativeTarget "PokemonApp" */;
@@ -331,6 +390,10 @@
 				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
+					DC46E07B2925A85D00A1448C = {
+						CreatedOnToolsVersion = 14.1;
+						TestTargetID = DC6B9121291ABED8007505AF;
+					};
 					DC6B9121291ABED8007505AF = {
 						CreatedOnToolsVersion = 14.1;
 					};
@@ -353,11 +416,19 @@
 			projectRoot = "";
 			targets = (
 				DC6B9121291ABED8007505AF /* PokemonApp */,
+				DC46E07B2925A85D00A1448C /* PokemonAppTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		DC46E07A2925A85D00A1448C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DC6B9120291ABED8007505AF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -392,6 +463,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		DC46E0782925A85D00A1448C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC46E0872925ADE200A1448C /* TestNetwork.swift in Sources */,
+				DC46E07F2925A85D00A1448C /* PokemonAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DC6B911E291ABED8007505AF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -425,6 +505,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		DC46E0812925A85D00A1448C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DC6B9121291ABED8007505AF /* PokemonApp */;
+			targetProxy = DC46E0802925A85D00A1448C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		DC6B9130291ABEDA007505AF /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -437,6 +525,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		DC46E0832925A85D00A1448C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 88RH8RT76F;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = AnatoliStepanuke.PokemonAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PokemonApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PokemonApp";
+			};
+			name = Debug;
+		};
+		DC46E0842925A85D00A1448C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 88RH8RT76F;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = AnatoliStepanuke.PokemonAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PokemonApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PokemonApp";
+			};
+			name = Release;
+		};
 		DC6B9134291ABEDA007505AF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -614,6 +740,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		DC46E0822925A85D00A1448C /* Build configuration list for PBXNativeTarget "PokemonAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC46E0832925A85D00A1448C /* Debug */,
+				DC46E0842925A85D00A1448C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		DC6B911D291ABED8007505AF /* Build configuration list for PBXProject "PokemonApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
