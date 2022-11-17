@@ -6,7 +6,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     // MARK: - Constants
     private let navigationController = UINavigationController()
-    private let rootViewController = PokemonListView()
+    private let networkManager = APIManager()
+    private let alertManager = AlertManager()
+    private let userDefaultsManager = UserDefaultsManager()
 
     // MARK: - UIScene
     func scene(
@@ -16,21 +18,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     ) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        let view = rootViewController
-        let presenter = PokemonListPresenter(listView: view)
+        let view = PokemonListView(alertManager: alertManager)
+        let presenter = PokemonListPresenter(
+            listView: view,
+            networkManager: networkManager,
+            alertManager: alertManager,
+            userDefaultsManager: userDefaultsManager
+        )
         view.listPresenter = presenter
         navigationController.pushViewController(view, animated: true)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
-
-    func sceneDidDisconnect(_ scene: UIScene) { }
-
-    func sceneDidBecomeActive(_ scene: UIScene) { }
-
-    func sceneWillResignActive(_ scene: UIScene) { }
-
-    func sceneWillEnterForeground(_ scene: UIScene) { }
-
-    func sceneDidEnterBackground(_ scene: UIScene) { }
 }

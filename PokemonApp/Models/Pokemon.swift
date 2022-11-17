@@ -1,7 +1,7 @@
 import UIKit
 
 // MARK: - Pokemon
-struct Result: Codable {
+struct ServerModel: Codable {
     let nextPage: String
     let results: [Pokemon]
 

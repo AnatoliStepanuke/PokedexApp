@@ -2,9 +2,6 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    // MARK: - Properties
-    var window: UIWindow?
-
     // MARK: - UIApplication
     func application(
         _ application: UIApplication,

@@ -1,66 +1,110 @@
 import UIKit
 
-protocol DetailsView: AnyObject {
+protocol DetailsView: AnyObject, ActivityIndicatorView, ShowAlert {
     func setPokemonImage(image: UIImage)
     func setPokemonName(name: String)
     func setPokemonType(types: [TypeElement])
     func setPokemonHeight(height: Int)
     func setPokemonWeight(weight: Int)
+    func startActivityIndicator() -> PokemonActivityIndicatorUIView
+    func stopActivityIndicator() -> PokemonActivityIndicatorUIView
+    func showAlertError(message: String)
+    func setSavedPokemons(savedPokemons: [PokemonDetails])
 }
 
 final class DetailsScreenView: UIViewController {
     // MARK: - Constants
+    private let alertManager: AlertManager
+    private let activityIndicatorView = PokemonActivityIndicatorUIView(style: .large, color: AppColor.fadingEffect)
+    private let pokemonImageView = PokemonUIImageView(
+        imageName: "person.circle",
+        contentMode: .scaleAspectFit
+    )
     private let pokemonStackView = PokemonUIStackView(
         axis: .vertical,
         alignment: .leading,
         distribution: .equalSpacing,
         height: 125
     )
-    private let pokemonImageView = UIImageView()
     private let pokemonNameLabel = PokemonUILabel(
+        text: "Pokemon name: -",
         height: 25,
         fontSize: 21,
         fontWeight: .medium,
         fontColor: AppColor.blackColor
     )
     private let pokemonTypeLabel = PokemonUILabel(
+        text: "Type: -",
         height: 25,
         fontSize: 21,
         fontWeight: .regular,
         fontColor: AppColor.blackColor
     )
     private let pokemonHeightLabel = PokemonUILabel(
+        text: "Height: - cm",
         height: 25,
         fontSize: 17,
         fontWeight: .light,
         fontColor: AppColor.blackColor
     )
     private let pokemonWeightLabel = PokemonUILabel(
+        text: "Weight: - kg",
         height: 25,
         fontSize: 17,
         fontWeight: .light,
         fontColor: AppColor.blackColor
     )
 
+    // MARK: - Init
+    init(alertManager: AlertManager) {
+        self.alertManager = alertManager
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     // MARK: - Properties
+    // Private
+    private var savedPokemons: [PokemonDetails] = []
+
+    // Public
     var detailsPresenter: DetailsPresenter?
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        setupActivityIndicatorView()
         setupPokemonImageView()
         setupPokemonUIStackView()
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        if let detailsPresenter = detailsPresenter { detailsPresenter.loadPokemonDetails() }
+        if let detailsPresenter = detailsPresenter {
+            detailsPresenter.loadPokemonDetails()
+            detailsPresenter.stopActivityIndicator()
+        }
     }
 
     // MARK: - Setups
     private func setupView() {
         view.backgroundColor = AppColor.shadowColor
-        view.addSubviews(pokemonImageView, pokemonStackView)
+        view.addSubviews(pokemonImageView, pokemonStackView, activityIndicatorView)
+    }
+
+    private func setupActivityIndicatorView() {
+        activityIndicatorView.fillEntireView()
+        activityIndicatorView.indicator.anchor(
+            top: activityIndicatorView.topAnchor,
+            leading: activityIndicatorView.leadingAnchor,
+            trailing: activityIndicatorView.trailingAnchor,
+            bottom: activityIndicatorView.bottomAnchor
+        )
+        if let detailsPresenter = detailsPresenter {
+            detailsPresenter.startActivityIndicator()
+        }
     }
 
     private func setupPokemonImageView() {
@@ -72,7 +116,6 @@ final class DetailsScreenView: UIViewController {
             padding: .init(top: 250, left: 0, bottom: 0, right: 0),
             size: .init(width: 200, height: 200)
         )
-        pokemonImageView.contentMode = .scaleAspectFit
     }
 
     private func setupPokemonUIStackView() {
@@ -94,23 +137,30 @@ final class DetailsScreenView: UIViewController {
 
 extension DetailsScreenView: DetailsView {
     // MARK: - API
-    func setPokemonImage(image: UIImage) {
-        pokemonImageView.image = image
+    func setPokemonImage(image: UIImage) { pokemonImageView.image = image }
+
+    func setPokemonName(name: String) { pokemonNameLabel.text = "Pokemon name: \(name)" }
+
+    func setPokemonType(types: [TypeElement]) { for type in types { pokemonTypeLabel.text = "Type: \(type.type.name)" }}
+
+    func setPokemonHeight(height: Int) { pokemonHeightLabel.text = "Height: \(height * 100) cm" }
+
+    func setPokemonWeight(weight: Int) { pokemonWeightLabel.text = "Weight: \(weight / 10) kg" }
+
+    func stopActivityIndicator(isAnimating: Bool, setClearColor: UIColor) {
+        switch isAnimating {
+        case true: activityIndicatorView.indicator.startAnimating()
+        case false:
+            activityIndicatorView.indicator.stopAnimating()
+            activityIndicatorView.backgroundColor = setClearColor
+        }
     }
 
-    func setPokemonName(name: String) {
-        pokemonNameLabel.text = "Pokemon name: \(name)"
-    }
+    func startActivityIndicator() -> PokemonActivityIndicatorUIView { return activityIndicatorView }
 
-    func setPokemonType(types: [TypeElement]) {
-        for type in types { pokemonTypeLabel.text = "Type: \(type.type.name)" }
-    }
+    func stopActivityIndicator() -> PokemonActivityIndicatorUIView { return activityIndicatorView }
 
-    func setPokemonHeight(height: Int) {
-        pokemonHeightLabel.text = "Height: \(height * 100) cm"
-    }
+    func showAlertError(message: String) { present(alertManager.showAlertError(message: message), animated: true) }
 
-    func setPokemonWeight(weight: Int) {
-        pokemonWeightLabel.text = "Weight: \(weight / 10) kg"
-    }
+    func setSavedPokemons(savedPokemons: [PokemonDetails]) { self.savedPokemons += savedPokemons }
 }
