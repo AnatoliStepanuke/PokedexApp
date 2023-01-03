@@ -1,9 +1,7 @@
 # PokemonApp
-
 Use the advanced list to explore Pokémon by type, ability, and more.
 
 ## Technologies
-
 + UIKit
 + Alamofire
 + MVP
@@ -13,8 +11,6 @@ Use the advanced list to explore Pokémon by type, ability, and more.
 + Swift Package Manager
 
 ## Design
-### Main Screen
-![Simulator Screen Shot - iPhone 12 mini (iOS 15 2) - 2023-01-03 at 14 03 50](https://user-images.githubusercontent.com/70813562/210345312-5bb9f6fe-4fa4-4942-8743-c079adb49b2f.png)
+<img width="637" alt="PokemonApp" src="https://user-images.githubusercontent.com/70813562/210352263-77fff73d-b669-475c-93ed-bde64c021c15.png">
 
-### Details Screen
-![Simulator Screen Shot - iPhone 12 mini (iOS 15 2) - 2023-01-03 at 14 04 01](https://user-images.githubusercontent.com/70813562/210345334-60b2aaa8-3cfd-4ed7-972d-ffee871b7af5.png)
+https://user-images.githubusercontent.com/70813562/210354002-458e12c5-59a9-47f1-87bd-17a6c4ce3e3e.mp4
