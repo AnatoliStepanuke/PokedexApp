@@ -13,7 +13,7 @@ Use the advanced list to explore Pokémon by type, ability, and more.
 ## Installation
 [Swift Package Manager](https://www.swift.org/package-manager/) lets you manage your project dependencies, allowing you to import libraries into your applications.
 To integrate [Alamofire](https://github.com/Alamofire/Alamofire) into your Xcode project using SPM, follow install steps below:
-1. Select File > Add Packages...
+1. Select **File > Add Packages...**
 2. Add the Github [URL](https://github.com/Alamofire/Alamofire.git) of the Package file.
 3. Select the Alamofire package product, select dependency rule, and select Add Package.
 
